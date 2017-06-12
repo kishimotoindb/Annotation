@@ -12,19 +12,24 @@ import java.lang.annotation.RetentionPolicy;
 
 public interface Constants {
 
-    @IntDef({
-            TRAVEL,
-            CAR,
-            PURCHASE
+    @IntDef(flag = true, value = {
+            APPROVAL_TYPE.TRAVEL,
+            APPROVAL_TYPE.CAR,
+            APPROVAL_TYPE.PURCHASE
     })
     @Retention(RetentionPolicy.SOURCE)
     @interface APPROVAL_TYPE {
+        int TRAVEL = 1;
+        int CAR = 2;
+        int PURCHASE = 3;
+    }
+}
+
+class A {
+    void main(@Constants.APPROVAL_TYPE int type) {
     }
 
-    int TRAVEL = 1;
-    int CAR = 2;
-    int PURCHASE = 3;
-
-
-
+    void s() {
+        main(5);
+    }
 }
